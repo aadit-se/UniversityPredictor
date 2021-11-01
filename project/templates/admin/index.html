@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>University Predictor System</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../../static/adminResource/css/style.min.css">
+    <link rel="stylesheet" href="../../static/adminResource/css/custom.css">
+
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="../../static/adminResource/css/themify-icons.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="../../static/adminResource/css/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="../../static/adminResource/css/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="../../static/adminResource/css/sweetalert.css">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="../../static/adminResource/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../static/adminResource/css/responsive.bootstrap.min.css">
+
+    <script src="../../static/adminResource/js/highcharts.js"></script>
+    <script src="../../static/adminResource/js/exporting.js"></script>
+
+    <script type="text/javascript">
+        function ajaxGPA() {
+            var countryName = document.getElementById("countryName");
+
+            var ajax = new XMLHttpRequest();
+
+            ajax.onreadystatechange = function () {
+
+                if (ajax.readyState == 4) {
+
+                    alert(ajax.responseText);
+
+                    var jsn = JSON.parse(ajax.responseText);
+
+                    if (jsn['responseKey'] != 'Error') {
+
+                        alert(">>>>>>>>>>>>>>>>" + jsn['responseKey']);
+
+                        var xdata = [];
+                        var ydata = [];
+
+                        for (var key in jsn['responseKey']) {
+
+                            console.log("key>>>>>" + key);
+
+                            console.log("innerjson>>>>>>>" + jsn['responseKey'][key]);
+
+                            var InnerJson = jsn['responseKey'][key];
+
+                            xdata.push(InnerJson['University']);
+                            ydata.push(InnerJson['GPACount']);
+                        }
+                        console.log("xdata", xdata);
+                        console.log("ydata", ydata);
+
+                        Highcharts.chart({
+                            chart: {
+                                renderTo: "container",
+
+                                type: 'column'
+                            },
+                            title: {
+                                text: 'University v/s GPACount'
+                            },
+                            subtitle: {
+                                text: 'Source: University Prediction'
+                            },
+                            xAxis: {
+                                categories: xdata,
+                                crosshair: true
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'GPA Count'
+                                }
+                            },
+                            plotOptions: {
+                                column: {
+                                    pointPadding: 0.2,
+                                    borderWidth: 0
+                                }
+                            },
+                            series: [{
+                                name: 'University Name',
+                                data: ydata
+
+                            }]
+                        })
+
+                    }
+                }
+
+            };
+            ajax.open("get", "/admin/ajaxGPACountGraph?countryName=" + countryName.value, true)
+
+            ajax.send()
+        }
+
+
+    </script>
+</head>
+
+<body>
+{% include 'admin/menu.html' %}
+{% include 'admin/header.html' %}
+
+<div id="notification-popup" class="notice-popup js__toggle" data-space="75">
+    <h2 class="popup-title">Your Notifications</h2>
+    <!-- /.popup-title -->
+
+    <!-- /.content -->
+</div>
+<!-- /#notification-popup -->
+
+<div id="message-popup" class="notice-popup js__toggle" data-space="75">
+    <h2 class="popup-title">Recent Messages<a href="#" class="float-right text-danger">New message</a></h2>
+    <!-- /.popup-title -->
+
+    <!-- /.content -->
+</div>
+<!-- /#message-popup -->
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-12">
+
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+            <div class="col-12">
+
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+
+            <div class="col-12">
+                <div class="box-content">
+                    <h4 class="box-title">Welcome Admin</h4>
+                    <!-- /.box-title -->
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <div class="col-12">
+                <div class="box-content">
+                    <h4 class="box-title">Statistics</h4>
+                    <!-- /.box-title -->
+                    <div>
+                        <label>Select Country For Graph</label>
+                        <select id="countryName" onchange="ajaxGPA()">
+                            <option>Select Country</option>
+                            {% for i in countryList %}
+                            <option value="{{ i[0] }}">{{ i[0] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+                        <input type="hidden" name="xvalue" value=""/>
+                        <input type="hidden" name="yvalue" value=""/>
+
+                    </div>
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+        </div>
+        <!-- /.row small-spacing -->
+        {% include 'admin/footer.html' %}
+    </div>
+    <!-- /.main-content -->
+</div><!--/#wrapper -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+
+</script>
+
+<
+script
+src = "../../static/adminResource/js/html5shiv.min.js" ></script>
+<script src="../../static/adminResource/js/respond.min.js"></script>
+<![endif]-->
+<!--
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../../static/adminResource/js/jquery.min.js"></script>
+<script src="../../static/adminResource/js/modernizr.min.js"></script>
+<script src="../../static/adminResource/js/bootstrap.min.js"></script>
+<script src="../../static/adminResource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../static/adminResource/js/nprogress.js"></script>
+<script src="../../static/adminResource/js/sweetalert.min.js"></script>
+<script src="../../static/adminResource/js/waves.min.js"></script>
+<!-- Sparkline Chart -->
+<script src="../../static/adminResource/js/jquery.sparkline.min.js"></script>
+<script src="../../static/adminResource/js/chart.sparkline.init.min.js"></script>
+
+<!-- Data Tables -->
+<script src="../../static/adminResource/js/jquery.dataTables.min.js"></script>
+<script src="../../static/adminResource/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../static/adminResource/js/dataTables.responsive.min.js"></script>
+<script src="../../static/adminResource/js/responsive.bootstrap.min.js"></script>
+<script src="../../static/adminResource/js/datatables.demo.min.js"></script>
+
+<script src="../../static/adminResource/js/main.min.js"></script>
+<script src="../../static/adminResource/js/mycommon.js"></script>
+</body>
+</html>

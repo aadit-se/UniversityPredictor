@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>University Predictor System</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../../static/userResource/css/style.min.css">
+    <link rel="stylesheet" href="../../static/userResource/css/custom.css">
+
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="../../static/userResource/css/themify-icons.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="../../static/userResource/css/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="../../static/userResource/css/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="../../static/userResource/css/sweetalert.css">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="../../static/userResource/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../static/userResource/css/responsive.bootstrap.min.css">
+
+</head>
+
+<body>
+{% include 'user/menu.html' %}
+{% include 'user/header.html' %}
+
+#
+<div id="notification-popup" class="notice-popup js__toggle" data-space="75">
+    # <h2 class="popup-title">Your Notifications</h2>
+    #    <!-- /.popup-title -->
+
+    <!-- /.content -->
+    #
+</div>
+<!-- /#notification-popup -->
+
+#
+<div id="message-popup" class="notice-popup js__toggle" data-space="75">
+    # <h2 class="popup-title">Recent Messages<a href="#" class="float-right text-danger">New message</a></h2>
+    <!-- /.popup-title -->
+
+    <!-- /.content -->
+    #
+</div>
+<!-- /#message-popup -->
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+
+            <div class="col-lg-14 col-18">
+
+                <div class="box-content  bordered primary margin-bottom-20" style="overflow-x:auto;margin-left: 350px;">
+                    <center>
+                        <h4 class="box-title"><i class="fa fa-user ico"></i>About</h4>
+                    </center>
+                    <form action="/user/updateRegister" method="post">
+                        <!-- .profile-avatar -->
+                        <table class="table table-hover no-margin">
+
+
+                            {% for row in registerVOList %}
+
+                            <tr>
+
+                                <input type="hidden" class="form-control" id="inputPasswordConfirm"
+                                       value="{{ row[1]['loginId'] }}" name="loginId" required>
+
+                            </tr>
+                            <tr>
+
+                                <input type="hidden" class="form-control" id="inputPasswordConfirm"
+                                       value="{{ row[0]['registerId'] }}" name="registerId" required>
+
+                            </tr>
+                            <tr>
+                                <td><label>First Name</label></td>
+                                <td>
+                                    <input type="text" class="form-control" id="inputName"
+                                           value="{{ row[0]['registerFirstname'] }}" name="registerFirstname"
+                                           required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Last Name</label></td>
+                                <td>
+                                    <input type="text" class="form-control" id="inputName"
+                                           value="{{ row[0]['registerLastname'] }}" name="registerLastname"
+                                           required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Gender</label></td>
+                                <td>
+                                    <input type="radio" value="Male" id="inputName" name="registerGender"
+                                           required>Male
+                                    <input type="radio" value="Female" id="inputName" name="registerGender"
+                                           required>Female
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Email</label></td>
+                                <td>
+                                    <input type="email" class="form-control" id="inputEmail"
+                                           value="{{ row[1]['loginUsername'] }}" name="loginUsername" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Contact</label></td>
+                                <td>
+                                    <input type="text" class="form-control" id="inputName"
+                                           value="{{ row[0]['registerContactNumber'] }}"
+                                           name="registerContactNumber" required>
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+                            <tr>
+
+
+                                <td colspan="2" style="align-content: center">
+                                    <center>
+                                        <button type="submit" class="btn btn-primary btn-xs waves-effect waves-light">
+                                            Submit
+                                    </center>
+                                </td>
+
+                            </tr>
+
+
+                        </table>
+                    </form>
+
+                </div>
+                <!-- /.box-content bordered -->
+
+
+                <!-- /.box-content -->
+            </div>
+
+            <!-- /.col-lg-3 col-12 -->
+
+            <!-- /.col-lg-9 col-12 -->
+        </div>
+        <!-- /.row small-spacing -->
+
+    </div>
+    <!-- /.main-content -->
+</div><!--/#wrapper -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="../..//static/userResource/js/html5shiv.min.js"></script>
+<script src="../..//static/userResource/js/respond.min.js"></script>
+<![endif]-->
+<!--
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../../static/userResource/js/jquery.min.js"></script>
+<script src="../../static/userResource/js/modernizr.min.js"></script>
+<script src="../../static/userResource/js/bootstrap.min.js"></script>
+<script src="../../static/userResource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../static/userResource/js/nprogress.js"></script>
+<script src="../../static/userResource/js/sweetalert.min.js"></script>
+<script src="../../static/userResource/js/waves.min.js"></script>
+<!-- Sparkline Chart -->
+<script src="../../static/userResource/js/jquery.sparkline.min.js"></script>
+<script src="../../static/userResource/js/chart.sparkline.init.min.js"></script>
+
+<!-- Data Tables -->
+<script src="../../static/userResource/js/jquery.dataTables.min.js"></script>
+<script src="../../static/userResource/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../static/userResource/js/dataTables.responsive.min.js"></script>
+<script src="../../static/userResource/js/responsive.bootstrap.min.js"></script>
+<script src="../../static/userResource/js/datatables.demo.min.js"></script>
+
+<script src="../../static/userResource/js/main.min.js"></script>
+<script src="../../static/userResource/js/mycommon.js"></script>
+</body>
+</html>

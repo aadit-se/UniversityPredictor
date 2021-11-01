@@ -1,0 +1,268 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>University Predictor System</title>
+
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../../static/userResource/css/style.min.css">
+    <link rel="stylesheet" href="../../static/userResource/css/custom.css">
+
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="../../static/userResource/css/themify-icons.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="../../static/userResource/css/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="../../static/userResource/css/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="../../static/userResource/css/sweetalert.css">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="../../static/userResource/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../static/userResource/css/responsive.bootstrap.min.css">
+
+</head>
+
+<body>
+{% include 'user/menu.html' %}
+{% include 'user/header.html' %}
+
+<div id="notification-popup" class="notice-popup js__toggle" data-space="75">
+    <h2 class="popup-title">Your Notifications</h2>
+    <!-- /.popup-title -->
+
+    <!-- /.content -->
+</div>
+<!-- /#notification-popup -->
+
+<div id="message-popup" class="notice-popup js__toggle" data-space="75">
+    <h2 class="popup-title">Recent Messages<a href="#" class="float-right text-danger">New message</a></h2>
+    <!-- /.popup-title -->
+
+    <!-- /.content -->
+</div>
+<!-- /#message-popup -->
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-12">
+
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+            <div class="col-12">
+
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+
+            <div class="col-12">
+                <div class="box-content">
+                    <h4 class="box-title">Perform Prediction</h4>
+                    <form action="/user/insertPrediction" method="post">
+                        <div class="form-group">
+                            <label>Select Country</label>
+                            <select name="countryName" class="form-control" id="countryName" onchange="fun1()">
+                                <option>choose the country..</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Canada">Canada</option>
+                                <option value="USA">USA</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Choose the exam you appered for</label>
+                            <select name="examType" class="form-control" id="examType" onchange="fun2()">
+                                <option>Choose from below..</option>
+                                <option value="IELTS">IELTS</option>
+                                <option value="TOFEL">TOFEL</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="IELTS_Score" style="display: none;">
+                            <label>Enter IELTS Score</label>
+                            <input type="text" name="IELTS_Score" class="form-control"
+                                   placeholder="enter the IELTS score...">
+                        </div>
+                        <div class="form-group" id="TOFEL_Score" style="display: none;">
+                            <label>Enter TOFEL Score</label>
+                            <input type="text" name="TOFEL_Score" class="form-control"
+                                   placeholder="enter the TOFEL score...">
+                        </div>
+
+                        <div class="form-group" id="GPA" style="display: none;">
+                            <label>Enter GPA Marks</label>
+                            <input type="text" name="GPA" class="form-control" required
+                                   placeholder="enter the GPA...">
+                        </div>
+
+                        <div class="form-group" id="GRE" style="display: none;">
+                            <label>Enter GRE score if appeared for</label>
+                            <input type="text" name="GRE" class="form-control" placeholder="enter the GRE score..">
+                        </div>
+
+
+                        <div class="form-group" id="passOutYear" style="display: none;">
+                            <label>Enter Year of passing </label>
+                            <input type="text" name="passOutYear" class="form-control"
+                                   placeholder="Year of Passing..">
+                        </div>
+
+
+                        <div class="form-group" id="workExperience" style="display: none;">
+                            <label>Enter the work expirence in your feild</label>
+                            <input type="number" name="workExperience" class="form-control"
+                                   placeholder="enter work exprerience">
+                        </div>
+
+                        <div class="form-group" id="internshipMonth" style="display: none;">
+                            <label>Enter years of intership if any</label>
+                            <input type="text" name="internshipMonth" class="form-control"
+                                   placeholder="enter Intership exprerience">
+                        </div>
+
+                        <div class="form-group" id="researchPaper" style="display: none;">
+                            <label>Enter the number of research paper done</label>
+                            <input type="text" name="researchPaper" class="form-control"
+                                   placeholder="enter research papers">
+                        </div>
+
+                        <div class="form-group" id="conferenceAttend" style="display: none;">
+                            <label>Enter the number of confrences attended</label>
+                            <input type="text" name="conferenceAttend" class="form-control"
+                                   placeholder="confrence attended">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary waves-effect waves-light" value="Submit">
+                        </div>
+
+                    </form>
+
+                    </h5>
+                    <!-- /.box-content -->
+                </div>
+                <!-- /.col-12 -->
+            </div>
+            <!-- /.row small-spacing -->
+            {% include 'user/footer.html' %}
+        </div>
+        <!-- /.main-content -->
+    </div><!--/#wrapper -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../..//static/userResource/js/html5shiv.min.js"></script>
+    <script src="../..//static/userResource/js/respond.min.js"></script>
+    <![endif]-->
+    <!--
+        ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../static/userResource/js/jquery.min.js"></script>
+    <script src="../../static/userResource/js/modernizr.min.js"></script>
+    <script src="../../static/userResource/js/bootstrap.min.js"></script>
+    <script src="../../static/userResource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../static/userResource/js/nprogress.js"></script>
+    <script src="../../static/userResource/js/sweetalert.min.js"></script>
+    <script src="../../static/userResource/js/waves.min.js"></script>
+    <!-- Sparkline Chart -->
+    <script src="../../static/userResource/js/jquery.sparkline.min.js"></script>
+    <script src="../../static/userResource/js/chart.sparkline.init.min.js"></script>
+
+    <!-- Data Tables -->
+    <script src="../../static/userResource/js/jquery.dataTables.min.js"></script>
+    <script src="../../static/userResource/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../static/userResource/js/dataTables.responsive.min.js"></script>
+    <script src="../../static/userResource/js/responsive.bootstrap.min.js"></script>
+    <script src="../../static/userResource/js/datatables.demo.min.js"></script>
+
+    <script src="../../static/userResource/js/main.min.js"></script>
+    <script src="../../static/userResource/js/mycommon.js"></script>
+
+    <script type="text/javascript">
+
+        function fun1() {
+
+            var countryName = document.getElementById("countryName")
+            var GPA = document.getElementById("GPA")
+            var GRE = document.getElementById("GRE")
+            var passOutYear = document.getElementById("passOutYear")
+            var workExperience = document.getElementById("workExperience")
+            var internshipMonth = document.getElementById("internshipMonth")
+            var researchPaper = document.getElementById("researchPaper")
+            var conferenceAttend = document.getElementById("conferenceAttend")
+
+            if (countryName.value == 'Australia') {
+                GRE.style.display = 'none';
+                GPA.style.display = '';
+                passOutYear.style.display = '';
+                workExperience.style.display = '';
+                internshipMonth.style.display = '';
+                researchPaper.style.display = '';
+                conferenceAttend.style.display = '';
+
+            }
+
+            else if (countryName.value == 'Canada') {
+                GRE.style.display = '';
+                GPA.style.display = '';
+                passOutYear.style.display = '';
+                workExperience.style.display = '';
+                internshipMonth.style.display = '';
+                researchPaper.style.display = '';
+                conferenceAttend.style.display = '';
+            }
+
+            else if (countryName.value == 'USA') {
+                GRE.style.display = '';
+                GPA.style.display = '';
+                passOutYear.style.display = '';
+                workExperience.style.display = '';
+                internshipMonth.style.display = '';
+                researchPaper.style.display = '';
+                conferenceAttend.style.display = '';
+            }
+            else {
+                GRE.style.display = 'none';
+                GPA.style.display = 'none';
+                passOutYear.style.display = 'none';
+                workExperience.style.display = 'none';
+                internshipMonth.styøle.display = 'none';
+                researchPaper.style.display = 'none';
+                conferenceAttend.style.display = 'none';
+            }
+
+        }
+
+        function fun2() {
+            var examType = document.getElementById("examType");
+            var IELTS = document.getElementById("IELTS_Score");
+            var TOFEL = document.getElementById("TOFEL_Score");
+
+            if (examType.value == 'IELTS') {
+                IELTS.style.display = '';
+                TOFEL.style.display = 'none';
+            }
+            else if (examType.value == 'TOFEL') {
+                TOFEL.style.display = '';
+                IELTS.style.display = 'none';
+            }
+
+            else {
+                IELTS.style.display = 'none';
+                TOFEL.style.display = 'none';
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Add Dataset</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../../static/adminResource/css/style.min.css">
+    <link rel="stylesheet" href="../../static/adminResource/css/custom.css">
+
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="../../static/adminResource/css/themify-icons.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="../../static/adminResource/css/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="../../static/adminResource/css/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="../../static/adminResource/css/sweetalert.css">
+
+</head>
+
+<body>
+{% include 'admin/menu.html' %}
+
+{% include 'admin/header.html' %}
+
+<!-- /#message-popup -->
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-12">
+                <div class="box-content">
+                    <h4 class="box-title">Upload Dataset</h4>
+                    <form data-toggle="validator" enctype="multipart/form-data" action="/admin/insertDataset"
+                          method="POST">
+
+                        <div class="form-group ">
+
+                            <input type="file" maxlength="15" class="form-control" id="inputFile" name="file" required>
+
+
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+        </div>
+        <!-- /.row small-spacing -->
+        {% include 'admin/footer.html' %}
+    </div>
+    <!-- /.main-content -->
+</div><!--/#wrapper -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="../..//static/adminResource/js/html5shiv.min.js"></script>
+<script src="../..//static/adminResource/js/respond.min.js"></script>
+<![endif]-->
+<!--
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../../static/adminResource/js/jquery.min.js"></script>
+<script src="../../static/adminResource/js/modernizr.min.js"></script>
+<script src="../../static/adminResource/js/bootstrap.min.js"></script>
+<script src="../../static/adminResource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../static/adminResource/js/nprogress.js"></script>
+<script src="../../static/adminResource/js/sweetalert.min.js"></script>
+<script src="../../static/adminResource/js/waves.min.js"></script>
+<!-- Sparkline Chart -->
+<script src="../../static/adminResource/js/jquery.sparkline.min.js"></script>
+<script src="../../static/adminResource/js/chart.sparkline.init.min.js"></script>
+
+<!-- Validator -->
+<script src="../../static/adminResource/js/validator.min.js"></script>
+
+<script src="../../static/adminResource/js/main.min.js"></script>
+<script src="../../static/adminResource/js/mycommon.js"></script>
+</body>
+</html>

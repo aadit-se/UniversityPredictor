@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>University Predictor System</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../../static/userResource/css/style.min.css">
+    <link rel="stylesheet" href="../../static/userResource/css/custom.css">
+
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="../../static/userResource/css/themify-icons.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="../../static/userResource/css/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="../../static/userResource/css/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="../../static/userResource/css/sweetalert.css">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="../../static/userResource/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../static/userResource/css/responsive.bootstrap.min.css">
+
+</head>
+
+<body>
+{% include 'user/menu.html' %}
+{% include 'user/header.html' %}
+
+<div id="notification-popup" class="notice-popup js__toggle" data-space="75">
+    <h2 class="popup-title">Your Notifications</h2>
+    <!-- /.popup-title -->
+
+    <!-- /.content -->
+</div>
+<!-- /#notification-popup -->
+
+<div id="message-popup" class="notice-popup js__toggle" data-space="75">
+    <h2 class="popup-title">Recent Messages<a href="#" class="float-right text-danger">New message</a></h2>
+    <!-- /.popup-title -->
+
+    <!-- /.content -->
+</div>
+<!-- /#message-popup -->
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+
+            <div class="col-12">
+                <div class="box-content" style="padding: 140px">
+                    {# <h4 class="box-title">Welcome Admin</h4>#}
+                    <img src="../../static/adminResource/image/uni1.png" style="margin-left: 130px">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="box-content">
+                    <h4 class="box-title">Blogs</h4>
+                    <!-- /.box-title -->
+
+                    <div class="review-list">
+
+                        {% for row in feedbackVOList %}
+
+                        <div class="review-item">
+                            <div class="top">
+                                <div class="name">{{ row[1]['loginUsername'] }}</div>
+                                <!-- /.name -->
+                                <div class="date">{{ row[0]['feedbackDate'] }}</div>
+                                <!-- /.date -->
+                            </div>
+                            <!-- /.top -->
+                            <div class="desc">{{ row[0]['feedbackDescription'] }}</div>
+                            <!-- /.desc -->
+                        </div>
+
+                        {% endfor %}
+                        <!-- /.review-item -->
+
+                    </div>
+                    <!-- /.review-list -->
+                </div>
+
+            </div>
+
+
+            {% include 'user/footer.html' %}
+            <!-- /.main-content -->
+        </div><!--/#wrapper -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="../..//static/userResource/js/html5shiv.min.js"></script>
+        <script src="../..//static/userResource/js/respond.min.js"></script>
+        <![endif]-->
+        <!--
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="../../static/userResource/js/jquery.min.js"></script>
+        <script src="../../static/userResource/js/modernizr.min.js"></script>
+        <script src="../../static/userResource/js/bootstrap.min.js"></script>
+        <script src="../../static/userResource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="../../static/userResource/js/nprogress.js"></script>
+        <script src="../../static/userResource/js/sweetalert.min.js"></script>
+        <script src="../../static/userResource/js/waves.min.js"></script>
+        <!-- Sparkline Chart -->
+        <script src="../../static/userResource/js/jquery.sparkline.min.js"></script>
+        <script src="../../static/userResource/js/chart.sparkline.init.min.js"></script>
+
+        <!-- Data Tables -->
+        <script src="../../static/userResource/js/jquery.dataTables.min.js"></script>
+        <script src="../../static/userResource/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../../static/userResource/js/dataTables.responsive.min.js"></script>
+        <script src="../../static/userResource/js/responsive.bootstrap.min.js"></script>
+        <script src="../../static/userResource/js/datatables.demo.min.js"></script>
+
+        <script src="../../static/userResource/js/main.min.js"></script>
+        <script src="../../static/userResource/js/mycommon.js"></script>
+</body>
+</html>

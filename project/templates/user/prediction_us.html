@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>University Predictor System</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../../static/userResource/css/style.min.css">
+    <link rel="stylesheet" href="../../static/userResource/css/custom.css">
+
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="../../static/userResource/css/themify-icons.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="../../static/userResource/css/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="../../static/userResource/css/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="../../static/userResource/css/sweetalert.css">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="../../static/userResource/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../static/userResource/css/responsive.bootstrap.min.css">
+
+</head>
+
+<body>
+{% include 'user/menu.html' %}
+{% include 'user/header.html' %}
+<!--<ul>-->
+<!--<li><a href="default.asp">Home</a></li>-->
+<!--<li><a href="news.asp">News</a></li>-->
+<!--<li><a href="contact.asp">Contact</a></li>-->
+<!--<li><a href="about.asp">About</a></li>-->
+<!--</ul>-->
+
+<div id="notification-popup" class="notice-popup js__toggle" data-space="75">
+    <h2 class="popup-title">Your Notifications</h2>
+    <!-- /.popup-title -->
+
+    <!-- /.content -->
+</div>
+<!-- /#notification-popup -->
+
+<div id="message-popup" class="notice-popup js__toggle" data-space="75">
+    <h2 class="popup-title">Recent Messages<a href="#" class="float-right text-danger">New message</a></h2>
+    <!-- /.popup-title -->
+
+    <!-- /.content -->
+</div>
+<!-- /#message-popup -->
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-12">
+
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+            <div class="col-12">
+
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+
+            <div class="col-12">
+                <div class="box-content">
+                    <h4 class="box-title">USA</h4>
+                    <form data-toggle="validator" action="/user/insertPrediction" method="post">
+                        <table>
+                            <tr>
+                                <td>
+                                    <h5>enter your cpi</h5>
+                                </td>
+                                <td>
+                                    <input type="number" name="cpi" placeholder="CPI">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>enter your GRE score</h5>
+                                </td>
+                                <td>
+                                    <input type="number" name="gre" placeholder="GRE">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>choose the exam you appeared for</h5>
+                                </td>
+                                <td>
+                                    <select name="exam">
+                                        <option name="ilets">ilets</option>
+                                        <option name="tofel">tofel</option>
+                                    </select>
+                                    <input type="number" name="score" placeholder="score">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>work expirence</h5>
+                                </td>
+                                <td>
+                                    <input type="number" name="wrk">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><h5>Internship if done</h5></td>
+                                <td><input type="number" value="internship"></td>
+                            </tr>
+                            <tr>
+                                <td><h5>number of confrences attended</h5></td>
+                                <td><input type="number" value="confrence"></td>
+                            </tr>
+                            <tr>
+                                <td><h5>number of research paper published</h5></td>
+                                <td><input type="number" value="researchpaper"></td>
+                            </tr>
+                        </table>
+                        <input type="submit" value="submit" name="predict">
+                    </form>
+
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+        </div>
+        <!-- /.row small-spacing -->
+        {% include 'user/footer.html' %}
+    </div>
+    <!-- /.main-content -->
+</div><!--/#wrapper -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="../..//static/userResource/js/html5shiv.min.js"></script>
+<script src="../..//static/userResource/js/respond.min.js"></script>
+<![endif]-->
+<!--
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../../static/userResource/js/jquery.min.js"></script>
+<script src="../../static/userResource/js/modernizr.min.js"></script>
+<script src="../../static/userResource/js/bootstrap.min.js"></script>
+<script src="../../static/userResource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../static/userResource/js/nprogress.js"></script>
+<script src="../../static/userResource/js/swe`1etalert.min.js"></script>
+<script src="../../static/userResource/js/waves.min.js"></script>
+<!-- Sparkline Chart -->
+<script src="../../static/userResource/js/jquery.sparkline.min.js"></script>
+<script src="../../static/userResource/js/chart.sparkline.init.min.js"></script>
+
+<!-- Data Tables -->
+<script src="../../static/userResource/js/jquery.dataTables.min.js"></script>
+<script src="../../static/userResource/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../static/userResource/js/dataTables.responsive.min.js"></script>
+<script src="../../static/userResource/js/responsive.bootstrap.min.js"></script>
+<script src="../../static/userResource/js/datatables.demo.min.js"></script>
+
+<script src="../../static/userResource/js/main.min.js"></script>
+<script src="../../static/userResource/js/mycommon.js"></script>
+</body>
+</html>

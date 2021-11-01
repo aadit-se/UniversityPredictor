@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>University Predictor System</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../../static/userResource/css/style.min.css">
+    <link rel="stylesheet" href="../../static/userResource/css/custom.css">
+
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="../../static/userResource/css/themify-icons.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="../../static/userResource/css/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="../../static/userResource/css/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="../../static/userResource/css/sweetalert.css">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="../../static/userResource/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../static/userResource/css/responsive.bootstrap.min.css">
+
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .rate {
+            border: 1px solid #cccccc;
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+
+        .rate:not(:checked) > input {
+            position: absolute;
+            top: -9999px;
+        }
+
+        .rate:not(:checked) > label {
+            float: right;
+            width: 1em;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 30px;
+            color: #ccc;
+        }
+
+        .rate:not(:checked) > label:before {
+            content: '★ ';
+        }
+
+        .rate > input:checked ~ label {
+            color: #ffc700;
+        }
+
+        .rate:not(:checked) > label:hover,
+        .rate:not(:checked) > label:hover ~ label {
+            color: #deb217;
+        }
+
+        .rate > input:checked + label:hover,
+        .rate > input:checked + label:hover ~ label,
+        .rate > input:checked ~ label:hover,
+        .rate > input:checked ~ label:hover ~ label,
+        .rate > label:hover ~ input:checked ~ label {
+            color: #c59b08;
+        }
+    </style>
+
+
+</head>
+
+<body>
+{% include 'user/menu.html' %}
+{% include 'user/header.html' %}
+
+
+<!-- /#message-popup -->
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-12">
+
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+            <div class="col-12">
+
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+
+            <div class="col-12">
+                <div class="box-content">
+                    <h4 class="box-title">Post blogs</h4>
+                    <form data-toggle="validator" action="/user/insertFeedback" method="post">
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" id="inputName" placeholder="Feedback Subject"
+                                   name="feedbackSubject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" id="complainDescription" maxlength="100" rows="2"
+                                      placeholder="Feedback Description" name="feedbackDescription"></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                        </div>
+
+
+                    </form>
+
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+        </div>
+        <!-- /.row small-spacing -->
+        {% include 'user/footer.html' %}
+    </div>
+    <!-- /.main-content -->
+</div><!--/#wrapper -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="../..//static/userResource/js/html5shiv.min.js"></script>
+<script src="../..//static/userResource/js/respond.min.js"></script>
+<![endif]-->
+<!--
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../../static/userResource/js/jquery.min.js"></script>
+<script src="../../static/userResource/js/modernizr.min.js"></script>
+<script src="../../static/userResource/js/bootstrap.min.js"></script>
+<script src="../../static/userResource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../static/userResource/js/nprogress.js"></script>
+<script src="../../static/userResource/js/sweetalert.min.js"></script>
+<script src="../../static/userResource/js/waves.min.js"></script>
+<!-- Sparkline Chart -->
+<script src="../../static/userResource/js/jquery.sparkline.min.js"></script>
+<script src="../../static/userResource/js/chart.sparkline.init.min.js"></script>
+
+<!-- Data Tables -->
+<script src="../../static/userResource/js/jquery.dataTables.min.js"></script>
+<script src="../../static/userResource/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../static/userResource/js/dataTables.responsive.min.js"></script>
+<script src="../../static/userResource/js/responsive.bootstrap.min.js"></script>
+<script src="../../static/userResource/js/datatables.demo.min.js"></script>
+
+<script src="../../static/userResource/js/main.min.js"></script>
+<script src="../../static/userResource/js/mycommon.js"></script>
+</body>
+</html>
